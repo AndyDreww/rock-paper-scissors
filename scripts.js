@@ -110,13 +110,11 @@ function addWin(winner, playerChoice, computerChoice) {
     if (winner === 'player') {
         infoBox.classList.remove('hidden');
         infoBox.innerHTML = 'You won! ' + playerChoice + ' beats ' + computerChoice;
-        console.log('you win!'); 
         playerScore++;
         game++;    
     } else {
         infoBox.classList.remove('hidden');
         infoBox.innerHTML = winner + ' won! ' + computerChoice + ' beats ' + playerChoice;
-        console.log(winner + ' win!')
         computerScore++;
         game++; 
     }
