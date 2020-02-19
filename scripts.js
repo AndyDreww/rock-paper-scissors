@@ -1,93 +1,146 @@
-const h2 = document.querySelector('h2');
-const pScore= document.querySelector('#pScore');
-const cScore= document.querySelector('#cScore');
-const dScore= document.querySelector('#dScore');
-const p = document.querySelector('#result');
-const button = document.querySelector('input');
-p.classList.remove('results');
+const infoBox = document.querySelector('#info-box');
+const resultsBox = document.querySelector('#result');
+const button = document.querySelector('#button');
+button.onclick = () => startGame();
 
+let gameString = document.querySelector('#gameNum');
+gameString.innerHTML = 0
+
+let game = -1;
 let playerScore = 0;
 let computerScore = 0;
-let drawnGames = 0;
 
+let playerScoreBoard = document.querySelector('#pScore');
+let computerScoreBoard = document.querySelector('#cScore');
 
-function playRound(player, computer) {
-
-    if(player === computer)
-    { 
-        p.innerHTML = `DRAW! You both chose ${player}`;
-        drawnGames += 1;
-        return ' ';       
-    }
-
-    if(player === 'rock') {
-        if(computer === 'paper') {
-            computerScore += 1; 
-            p.innerHTML = `You lost! ${computer} beats ${player}.`
-        }
-        else {
-            playerScore += 1; 
-            p.innerHTML = `You win! ${player} beats ${computer}!`
-        };
-    } else if (player === 'paper') {
-        if (computer === 'scissors') {
-            computerScore += 1; 
-            p.innerHTML = `You lost! ${computer} beats ${player}.`
-        }
-        else {
-            playerScore += 1; 
-            p.innerHTML = `You win! ${player} beats ${computer}!`
-        };
-    } else {
-        if(computer === 'rock') {
-            computerScore += 1; 
-            p.innerHTML = `You lost! ${computer} beats ${player}.`
-        }
-        else {
-            playerScore += 1; 
-            p.innerHTML = `You win! ${player} beats ${computer}!`
-        };
-    }
-}
-
-let computerPlay = function() {
-    let number = Math.floor(Math.random() * 3);
-    return (number === 0) ? 'rock' :
-    (number === 1) ? 'paper' : 'scissors';
-}
-
-let playerSelect = function() {
-    let choice = prompt('Rock, Paper, Scissors?').toLowerCase();
-    if(!(choice === 'rock' || choice === 'paper' || choice === 'scissors')) {
-        alert('You have to choose one of the options!');        
-        playerSelect();
-    }
-    return choice;
-}
-
-function playGame() {
-    let i = 1;    
+function startGame(){
+    game = 0;
     playerScore = 0;
     computerScore = 0;
-    drawnGames = 0;
-    while(!(playerScore === 5 || computerScore === 5)){
-        playRound(playerSelect(), computerPlay());        
-        h2.textContent = 'Game: ' + i; 
-        p.classList.add('results');
-        cScore.textContent = ' ' + computerScore;
-        pScore.textContent = ' ' + playerScore;
-        dScore.textContent = ' ' + drawnGames;
-        i++;
-    }
+    gameString.innerHTML = 1;
+    infoBox.classList.add('hidden');
+    computerScoreBoard.classList.remove('hidden');
+    playerScoreBoard.classList.remove('hidden');
+    playerScoreBoard.innerHTML = playerScore;
+    computerScoreBoard.innerHTML = computerScore;
+    button.value = 'Reset Game';
+    resultsBox.classList.add('hidden');
+}
+
+document.querySelector('#paper').addEventListener('click', function(e) {
+    (game < 0) ? startGameMessage() : setChoices('paper');
+});
+document.querySelector('#rock').addEventListener('click', function(e) {
+    (game < 0) ? startGameMessage() : setChoices('rock');
+});
+document.querySelector('#scissors').addEventListener('click', function(e) {
+    (game < 0) ? startGameMessage() : setChoices('scissors');
+});
 
 
 
-    if(playerScore > computerScore) {
-        p.innerHTML = 'You won the game!';
+function startGameMessage(){
+    if(game === -2) {
+        alert('You need to reset the game!');
     } else {
-        p.innerHTML = 'You lost the game! Better luck next time!';
-
+        alert('You need to start the game!');
     }
 }
 
-button.addEventListener('click', playGame);
+function computerChoice() {
+    let number = Math.floor(Math.random() * 3);
+    switch (number) {
+        case 0:
+            return 'paper';
+            break;
+        case 1:
+            return 'rock';
+            break;
+        case 2:
+            return 'scissors';
+            break;
+    }
+};
+
+function setChoices(choice) {
+    let playerChoice = choice;
+    round(playerChoice, computerChoice());
+};
+
+function round(playerChoice, computerChoice){
+    if(playerChoice === computerChoice) {        
+        infoBox.innerHTML = 'DRAW! You both chose ' + computerChoice;
+        game++;
+    } else {
+        if(playerChoice === 'rock'){
+            switch (computerChoice) {
+                case 'paper':
+                    addWin('computer', playerChoice, computerChoice);
+                    break;
+                default:
+                    addWin('player', playerChoice, computerChoice);                
+            }
+        } else if(playerChoice === 'paper', playerChoice, computerChoice) {
+            switch (computerChoice) {
+                case 'scissors':
+                    addWin('computer', playerChoice, computerChoice);
+                    break;
+                default:
+                    addWin('player', playerChoice, computerChoice);               
+            }
+        } else {
+            switch (computerChoice) {
+                case 'rock':
+                    addWin('computer', playerChoice, computerChoice);
+                    break;
+                default:
+                    addWin('player', playerChoice, computerChoice); 
+            }
+        }
+    }
+    evaluateGame();
+};
+
+function setPlayerScores(){
+    playerScoreBoard.innerHTML = playerScore;
+    computerScoreBoard.innerHTML = computerScore;
+}
+
+function addWin(winner, playerChoice, computerChoice) {
+    if (winner === 'player') {
+        infoBox.classList.remove('hidden');
+        infoBox.innerHTML = 'You won! ' + playerChoice + ' beats ' + computerChoice;
+        console.log('you win!'); 
+        playerScore++;
+        game++;    
+    } else {
+        infoBox.classList.remove('hidden');
+        infoBox.innerHTML = winner + ' won! ' + computerChoice + ' beats ' + playerChoice;
+        console.log(winner + ' win!')
+        computerScore++;
+        game++; 
+    }
+    setPlayerScores();
+}
+
+function endGame(){
+    button.value = 'Start Game';
+    game = -2;
+    if (playerScore > computerScore) {
+        resultsBox.classList.remove('hidden');
+        resultsBox.innerHTML = '<p>You win!</p>';
+    } else {
+        resultsBox.classList.remove('hidden');
+        resultsBox.innerHTML = '<p>You lost! Better luck next time!</p>';
+    }
+}
+
+function evaluateGame(){
+    if(playerScore === 5 || computerScore === 5){
+        endGame()
+    }
+
+    if(game > 0){
+        gameString.innerHTML = game;
+    }
+}
