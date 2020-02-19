@@ -7,14 +7,14 @@ A simple Rock, Paper, Scissors game that was creating using JavaScript. The user
 the computer gives a randomized choice, the game lasts five rounds.
 The project is a task on [The Odin Project](http://www.theodinproject.com).
 
-##Release History
+## Release History
 ---
 
 * 2.0 - Improved the stylings, add animations and changed the interactivity so that it's visible and not text based.
 
 * 1.0 - Basic Text Version
 
-##Created By
+## Created By
 ---
 Andrew Widdowson [andrewwiddowson@hotmail.com](andrewwiddowson@hotmail.com)
 
