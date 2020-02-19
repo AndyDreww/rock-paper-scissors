@@ -14,6 +14,7 @@ The project is a task on [The Odin Project](http://www.theodinproject.com).
 * 1.0 - Basic Text Version
 
 ## Created By
-Andrew Widdowson [andrewwiddowson@hotmail.com](andrewwiddowson@hotmail.com)
+
+Andrew Widdowson <andrewwiddowson@hotmail.com>
 
 [GitHub Page](https://github.com/AndyDreww)
