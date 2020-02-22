@@ -42,7 +42,7 @@ input[type='button'] {
     border: none;
     margin: 10px auto;
     border-radius: 30px;
-    font-size: 40px;
+    font-size: 30px;
     font-family: 'Montserrat', sans-serif;
     background-color:#beffb8;
     font-weight: 900;
@@ -78,7 +78,7 @@ input[type='button']:active {
 .score-board p {
     font-size: 12px;
     position: relative;
-    left: -5px;
+    left: -10px;
 }
 
 .num-of-game {
@@ -151,11 +151,11 @@ input[type='button']:active {
 }
 
 #result {
-    width: 70%;
+    width: 100%;
     margin: 0 auto;
     clear: both;
     border-radius: 10px;
-    padding: 30px;
+    padding: 20px;
     text-align: center;
     margin-top: 10px;
 }
@@ -164,8 +164,8 @@ input[type='button']:active {
     font-family: 'Press Start 2P', cursive;
     color: #7dadb7;
     font-weight: 900;
-    font-size: 30px;
-    line-height: 2.5em;
+    font-size: 20px;
+    line-height: 2em;
 }
 
 .hidden {
@@ -238,9 +238,11 @@ input[type='button']:active {
         height: 50px;
         font-size: 25px;
     }
-    
 
-      
+    #result p {
+        font-size: 30px;
+        line-height: 2.5em;
+    }      
   }
 
   /* @media only screen and (max-width: 1000px) {
