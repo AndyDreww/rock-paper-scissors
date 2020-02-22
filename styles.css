@@ -5,7 +5,7 @@
 }
 
 header {
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
 }
@@ -34,7 +34,7 @@ header p {
     font-family: 'Montserrat', sans-serif;
     color: #444;
     margin: 5px;
-    font-size: 18px;
+    font-size: 40px;
 }
 
 input[type='button'] {
@@ -42,10 +42,11 @@ input[type='button'] {
     border: none;
     margin: 10px auto;
     border-radius: 30px;
-    font-size: 20px;
+    font-size: 40px;
     font-family: 'Montserrat', sans-serif;
     background-color:#beffb8;
     font-weight: 900;
+    width: 80%;
 }
 
 input[type='button']:hover {
@@ -58,20 +59,26 @@ input[type='button']:active {
 }
 
 .score-container {
-    width: 50%;
+    width: 100%;
     margin: 20px auto;
     font-family: 'Press Start 2P', cursive;
     text-align: center;
 }
 
 .score-board {
-    width: 40%;
+    width: 30%;
     display: inline-block;
     background: #555;
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
     color: #fff;
+}
+
+.score-board p {
+    font-size: 12px;
+    position: relative;
+    left: -5px;
 }
 
 .num-of-game {
@@ -95,7 +102,7 @@ input[type='button']:active {
 }
 
 .choice {
-    width: 30%;
+    width: 90%;
     float: left;
     text-align: center;
     font-size: 50px;
@@ -129,13 +136,18 @@ input[type='button']:active {
 #info-box {
     margin: 0 auto;
     text-align: center;
-    background:#7dadb7;
+    background:#beffb8;
     width: 20%;
     padding: 10px;
-    color:#fff;
+    color:#555;
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     clear: both;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    opacity: .9;
+    font-weight: 900;
 }
 
 #result {
@@ -182,7 +194,56 @@ input[type='button']:active {
   100% { transform: translate(5px, -2px) rotate(-1deg); }
   }
 
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (min-width: 850px) {
+      header {
+        width: 50%;
+      }
+
+      h1 {
+          font-size: 80px;
+      }
+
+      header p {
+          font-size: 18px;
+      }
+
+      input[type='button'] {
+          width: inherit;
+          font-size: 20px;
+      }
+
+      .score-container {
+          width: 50%;
+      }
+
+      .choice {
+          width: 30%;
+      }
+
+      .score-board {
+        width: 40%;
+        font-size: 25px;
+      }
+
+      .score-board p {
+          left: 0;
+          font-size: 20px;
+      }
+
+    #info-box { 
+        top: 0;
+        bottom: auto;
+        opacity: 1;
+        width: 100%;
+        height: 50px;
+        font-size: 25px;
+    }
+    
+
+      
+  }
+
+  /* @media only screen and (max-width: 1000px) {
       .choice-container {
           margin: 0 auto;
           width: 50%;
@@ -197,4 +258,4 @@ input[type='button']:active {
           float: none;
           width: 100%;
       }
-  }
+  } */

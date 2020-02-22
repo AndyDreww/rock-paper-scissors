@@ -27,13 +27,13 @@ function startGame(){
     resultsBox.classList.add('hidden');
 }
 
-document.querySelector('#paper').addEventListener('click', function(e) {
+document.querySelector('#paper').addEventListener('click', function() {
     (game < 0) ? startGameMessage() : setChoices('paper');
 });
-document.querySelector('#rock').addEventListener('click', function(e) {
+document.querySelector('#rock').addEventListener('click', function() {
     (game < 0) ? startGameMessage() : setChoices('rock');
 });
-document.querySelector('#scissors').addEventListener('click', function(e) {
+document.querySelector('#scissors').addEventListener('click', function() {
     (game < 0) ? startGameMessage() : setChoices('scissors');
 });
 
