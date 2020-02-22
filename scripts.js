@@ -68,7 +68,8 @@ function setChoices(choice) {
 };
 
 function round(playerChoice, computerChoice){
-    if(playerChoice === computerChoice) {        
+    if(playerChoice === computerChoice) {     
+        infoBox.classList.remove('hidden');
         infoBox.innerHTML = 'DRAW! You both chose ' + computerChoice;
         game++;
     } else {
