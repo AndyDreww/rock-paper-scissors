@@ -172,6 +172,51 @@ input[type='button']:active {
     display: none;
 }
 
+#warning-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.75);
+    font-size: 20px;
+    z-index: 2;
+}
+
+#warning-box {
+    background-color: #fff;
+    width: 70%;
+    position: fixed;
+    top: 30%;
+    left: 100px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+#warning-content {
+    position: relative;
+}
+
+#warning-box p {
+    text-align: center;
+    font-weight: 900;
+}
+
+#warning-close {
+    float: right;
+    position: absolute;
+    top: -5px;
+    right: 0;
+    border: 1px solid #000;
+    padding: 5px;
+}
+
+#warning-close:hover {
+    background: #e3e3e3;
+    cursor: pointer;
+}
+
   @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
   5% { transform: translate(-5px, 0px) rotate(1deg); }
@@ -244,7 +289,12 @@ input[type='button']:active {
     #result p {
         font-size: 30px;
         line-height: 2.5em;
-    }      
+    }     
+    
+    #warning-box {
+        left: 200px;
+    }
+    
   }
 
   /* @media only screen and (max-width: 1000px) {

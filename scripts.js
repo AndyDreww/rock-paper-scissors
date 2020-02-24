@@ -40,11 +40,22 @@ document.querySelector('#scissors').addEventListener('click', function() {
 
 
 function startGameMessage(){
+    let warningBox = document.querySelector('#warning-container');
+    let closeButton = document.querySelector('#warning-close')
+    let warningText = document.querySelector('#warning-container span');
     if(game === -2) {
-        alert('You need to reset the game!');
+        warningText.textContent = 'Please start the game again!';
+        warningBoxPopUp(warningBox, closeButton);
     } else {
-        alert('You need to start the game!');
+        warningBoxPopUp(warningBox, closeButton);
     }
+}
+
+function warningBoxPopUp(warningBox, closeButton) {
+    warningBox.classList.remove('hidden');
+        closeButton.addEventListener('click', function(){
+            warningBox.classList.add('hidden');
+        })
 }
 
 function computerChoice() {
